@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <title>Physics Simulator</title>
+  </head>
+  <body>
+    <div class="container">
+      <canvas id="canvas" width="600px" height="600px"></canvas>
+      <div class="hud">
+        <div><span>Wind: </span><span id="hud-wind">5</span></div>
+        <div><span>Friction: </span><span id="hud-friction">5</span></div>
+        <div><span>Gravity: </span><span id="hud-gravity">10</span></div>
+        <div><span>Drag Force: </span><span id="hud-drag">10</span></div>
+        <div><span>Mover size: </span><span id="hud-size">10</span></div>
+      </div>
+      <div class="controls">
+        <div class="tags">
+          <h3>Forces</h3>
+          <h3>Strength</h3>
+        </div>
+        <div class="actions">
+          <div>
+            <h3>Mover size:</h3>
+            <input
+              type="range"
+              min="5"
+              max="20"
+              value="5"
+              step="1"
+              class="slider"
+              data-force="size"
+            />
+          </div>
+          <div>
+            <button type="button" data-force="wind">Wind</button>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              value="0.01"
+              step="0.01"
+              class="slider"
+              data-force="wind"
+            />
+          </div>
+          <div>
+            <button type="button" data-force="friction">Friction</button>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              value="0.01"
+              step="0.01"
+              class="slider"
+              data-force="friction"
+            />
+          </div>
+          <div>
+            <button type="button" data-force="gravity">Gravity</button>
+            <input
+              type="range"
+              min="0"
+              max="10"
+              value="0.1"
+              step="0.01"
+              class="slider"
+              data-force="gravity"
+            />
+          </div>
+          <div>
+            <button type="button" data-force="drag">Drag Force</button>
+            <input
+              type="range"
+              min="0"
+              max="0.5"
+              value="0.01"
+              step="0.01"
+              class="slider"
+              data-force="drag"
+            />
+          </div>
+          <div>
+            <button type="button" data-force="water">Water</button>
+          </div>
+          <div>
+            <button type="button" data-force="attractor">Attractor</button>
+          </div>
+          <div>
+            <button class="inactive" type="button" data-force="clear">
+              Clear Forces
+            </button>
+          </div>
+          <div>
+            <button class="inactive" type="button" data-force="reset">
+              Reset
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./myLibs.js"></script>
+    <script>
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      const width = canvas.width;
+      const height = canvas.height;
+
+      canvas.addEventListener("mousemove", (e) => {
+        mousePos(e);
+      });
+
+      document.addEventListener("keypress", (e) => {
+        // console.log(mouseX - e.clientX, mouseY - e.clientY);
+
+        if (e.key === " ") addMovers(mouseX, mouseY);
+      });
+    </script>
+    <script src="./Attractor.js"></script>
+    <script src="./Liquid.js"></script>
+    <script src="./Mover.js"></script>
+    <script src="./Main.js"></script>
+  </body>
+</html>

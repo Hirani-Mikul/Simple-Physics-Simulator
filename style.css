@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* width: 100vw; */
+  min-width: max-content;
+  /* height: 100vh; */
+}
+canvas {
+  background-color: rgb(100, 100, 100);
+}
+.container {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 600px 1fr 340px;
+}
+.controls {
+}
+.hud {
+  width: 100%;
+  margin: auto;
+}
+.hud div {
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid grey;
+  justify-content: space-between;
+  margin: 10px auto;
+}
+.hud span {
+  font-size: 24px;
+  user-select: none;
+}
+.tags {
+  display: flex;
+  font-size: 24px;
+  justify-content: space-between;
+  padding: 5px;
+}
+.actions {
+  display: flex;
+  flex-direction: column;
+}
+.actions div {
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+.actions div h3 {
+  margin: 0;
+  user-select: none;
+  font-size: 24px;
+}
+button {
+  padding: 5px;
+  width: 100px;
+  font-size: 16px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+button.active:not(.inactive) {
+  background-color: rgb(194, 194, 194);
+  border-color: green;
+}
+button.inactive {
+  border-color: grey;
+}
+input {
+  float: right;
+}
